@@ -1,0 +1,17 @@
+.about {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+.about h1 {
+font-size: 4vw;
+}
+
+.about p {
+    max-width: 50%;
+    font-size:1.3vw;
+}

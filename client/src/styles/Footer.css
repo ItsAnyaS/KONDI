@@ -1,0 +1,12 @@
+footer {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-splash-color);
+}
+
+footer p a {
+    color: black;
+}
+

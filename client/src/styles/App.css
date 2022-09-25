@@ -1,0 +1,21 @@
+*{
+box-sizing: border-box;
+margin: 0;
+--main-color: #F7FBFC;
+--accent-color: #A1E6EB;
+--splash-color: #90C8AC;
+--dark-splash-color: #73A9AD;
+font-family: Manrope;
+}
+
+.btn-hover:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.App {
+  background-color: var(--splash-color);
+}
+
+

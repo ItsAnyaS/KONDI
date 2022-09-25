@@ -1,0 +1,60 @@
+.entries-list {
+    list-style-type: none;
+    margin-left: -3%;
+    padding: 3%;
+}
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: x-large;
+    justify-content: space-evenly;
+    margin: auto;
+    min-height: 80vh;
+    padding: 2.3% 0;
+}
+
+#profile-entries-list-container {
+    align-self: flex-start;
+    border: 3px solid #90C8AC;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 100%;
+    width: 30%;
+
+}
+
+#profile-selected-entry-container {
+    border: 3px solid #90C8AC;
+    border-radius: 3px;
+    overflow-y: scroll;
+    max-height: 70vh;
+    width: 30%;
+}
+
+#profile-entry-delete-button {
+    align-items: center;
+    background-color: #73A9AD;
+    border: 3px solid #A1E6EB;
+    border-radius: 2px;
+    color: white;
+    display: inline-block;
+    font-size: large;
+    justify-content: center;
+    margin-right: 3%;
+    margin-top: 3%;
+    text-align: center;
+    width: 30%;
+}
+
+.profile-selected-entry-title,
+#profile-entries-label {
+    border-bottom: 2px solid black
+}
+
+#selected-entry-content {
+    padding: 3%;
+    margin: auto auto auto -3%;
+}
