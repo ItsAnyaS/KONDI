@@ -37,5 +37,7 @@ Rails.application.routes.draw do
   post "/auth/signup", to: "auth#sign_up"
   post '/auth/login', to: 'auth#login'
 
+
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
   #YAy Organization
 end

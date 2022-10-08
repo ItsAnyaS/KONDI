@@ -16,15 +16,21 @@ const Profile = ({ loginState }) => {
     const getEntries = async () => {
         let authToken = Cookies.get('authToken')
         try {
-            const req = await fetch(`/entries/user`, {
+            let req = await fetch(`/entries/user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ user_id: authToken })
             })
-            const res = await req.json()
-            setEntries(res)
+            let res = await req.json()
+            if (req.status === 200){
+
+                console.log(res)
+                setEntries(res)
+            }else if (req. status === 422){
+                console.log(res.message)
+            }
         }
         catch {
             if (!loginState) navigate('/login')
@@ -56,13 +62,8 @@ const Profile = ({ loginState }) => {
         }
     }
 
-    const entries_lis = (entries) => {
-        return entries.length !== 0 ?
-            entries.map((entry, index) => <li key={entry.id} className='profile-entry'>
-                <span className='profile-entry-date'>{formatCreatedAt(entry)}</span> | <span className='profile-entry-title' onClick={handleEntryLiClick}><b id={index}>{entry.title}</b></span>
-            </li>) :
-            <li id='no-entries'>You have no entries</li>
-    }
+        
+    
     const buttonStyles = {
         alignItems: "center",
         backgroundColor: "#73A9AD",
@@ -82,7 +83,13 @@ const Profile = ({ loginState }) => {
                 <div id="profile-entries-list-container">
                     <h3 id='profile-entries-label'>Entries</h3>
                     <ul className='entries-list'>
-                        {entries_lis(entries)}
+                        {
+                             entries.length !== 0 ?
+                             entries.map((entry, index) => <li key={entry.id} className='profile-entry'>
+                                 <span className='profile-entry-date'>{formatCreatedAt(entry)}</span> | <span className='profile-entry-title' onClick={handleEntryLiClick}><b id={index}>{entry.title}</b></span>
+                             </li>) :
+                             <li id='no-entries'>You have no entries</li>
+                        }
                     </ul>
                     <NavLink
                         className="profile-navlink-new-entry"

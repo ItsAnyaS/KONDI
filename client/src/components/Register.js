@@ -23,11 +23,10 @@ const Register = ({onLoginChange}) => {
                 },
                 body: JSON.stringify(formChange)
             })
-            if (req.ok){
                 let res = await req.json()
                 Cookies.set('authToken', res.auth_token)
 
-            }
+
 
         }
         //Change cookie

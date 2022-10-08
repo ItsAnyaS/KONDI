@@ -8,25 +8,17 @@ class EntryController < ApplicationController
 
     def entries_by_user
         token = params[:user_id]
+        puts params
         hmac_secret = 'my$ecretK3y'
-        puts token
-        if token 
-            decoded_token = JWT.decode token, hmac_secret, true, { algorithm: 'HS256' }
-            puts decoded_token
-            user = User.find_by(username: decoded_token[0]["data"])
-            puts user
+        decoded_token = JWT.decode token, hmac_secret, true, { algorithm: 'HS256' }
+        puts decoded_token
+        user = User.find_by(username: decoded_token[0]["data"])
             if user 
-
             entries = Entry.where(user_id: user.id)
-            if entries
-                render json: entries
-            end
+            render json: entries
         else 
             render json: [{message: "Coudn't verify user", params: params}]
         end
-    else 
-        render json: {message: 'no user'}
-    end
     end
 
     def entries_get_single
