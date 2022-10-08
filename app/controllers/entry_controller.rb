@@ -2,9 +2,9 @@
 class EntryController < ApplicationController
     protect_from_forgery with: :null_session
     skip_before_action :verify_authenticity_token
-    def index
-        render json: Entry.all
-    end
+    # def index
+    #     render json: Entry.all
+    # end
 
     def entries_by_user
         token = params[:user_id]
@@ -22,7 +22,7 @@ class EntryController < ApplicationController
     end
 
     def entries_get_single
-        render json:Entry.find_by(id:params[:id])
+        render json: Entry.find_by(id:params[:id])
     end
 
     def delete_entry
