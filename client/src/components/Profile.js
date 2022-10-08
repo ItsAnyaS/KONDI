@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/Profile.css'
 import '../styles/App.css'
+import Cookies from 'js-cookie'
 
 const Profile = ({ loginState }) => {
     const [entries, setEntries] = useState([])
@@ -13,15 +14,14 @@ const Profile = ({ loginState }) => {
     let navigate = useNavigate()
 
     const getEntries = async () => {
-        const user_id = document.cookie.split('=')[1]
+        let authToken = Cookies.get('authToken')
         try {
             const req = await fetch(`/entries/user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Cookie": document.cookie
                 },
-                body: JSON.stringify({ user_id: user_id })
+                body: JSON.stringify({ user_id: authToken })
             })
             const res = await req.json()
             setEntries(res)
@@ -58,7 +58,7 @@ const Profile = ({ loginState }) => {
 
     const entries_lis = (entries) => {
         return entries.length !== 0 ?
-            entries.map((entry, index) => <li key={entry.title} className='profile-entry'>
+            entries.map((entry, index) => <li key={entry.id} className='profile-entry'>
                 <span className='profile-entry-date'>{formatCreatedAt(entry)}</span> | <span className='profile-entry-title' onClick={handleEntryLiClick}><b id={index}>{entry.title}</b></span>
             </li>) :
             <li id='no-entries'>You have no entries</li>

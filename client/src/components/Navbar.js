@@ -2,13 +2,14 @@ import { NavLink } from 'react-router-dom'
 import '../styles/navbar.css'
 import '../styles/App.css'
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 
 const NavBar = ({onLoginChange, loginState}) => {
 
     const [buttons,setButtons] = useState()
 
     const deleteCookie = () => {
-        document.cookie = 'hash='
+        Cookies.remove('authToken')
         onLoginChange(false)
     }
 
@@ -28,7 +29,7 @@ const NavBar = ({onLoginChange, loginState}) => {
 
     return (
         <nav className="navbar">
-            <img className='logo' src='kon_di logo_outlined.png' alt='Logo'/>
+            <img className='logo' src='logo_outlined.png' alt='Logo'/>
             <ul className='nav-list'>
                 <NavLink style={{ textDecoration: 'none' }} to='/'><li className='nav-items btn-hover'>HOME</li></NavLink>
                 {buttons}

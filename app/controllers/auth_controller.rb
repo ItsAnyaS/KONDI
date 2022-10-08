@@ -8,7 +8,7 @@ class AuthController < ApplicationController
         payload = {data: user["username"]}
         if token = params[:password]
             hashed_user = JWT.encode payload, hmac_secret, 'HS256'
-            render json: {hashed_user: hashed_user}
+            render json: {auth_token: hashed_user}
         else 
             render json: {message: "not authorized"}, status: 404
         end
@@ -21,7 +21,7 @@ class AuthController < ApplicationController
             if user 
             payload = {data: user["username"]}
             hashed_user = JWT.encode payload, hmac_secret, 'HS256'
-            render json: {hashed_user: hashed_user}
+            render json: {auth_token: hashed_user}
             else
                 render json: {message: 'Something went wrong'}, status: 404
             end

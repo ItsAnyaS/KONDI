@@ -1,6 +1,7 @@
 import '../styles/Auth.css'
 import '../styles/App.css'
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import {useState, useEffect} from 'react'
 const Register = ({onLoginChange}) => {
@@ -22,10 +23,12 @@ const Register = ({onLoginChange}) => {
                 },
                 body: JSON.stringify(formChange)
             })
-            let res = await req.json()
-            console.log(res)
-            let tommorow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
-            document.cookie = `hash=${res.hashed_user}; expires=` + tommorow.toUTCString()
+            if (req.ok){
+                let res = await req.json()
+                Cookies.set('authToken', res.auth_token)
+
+            }
+
         }
         //Change cookie
         
