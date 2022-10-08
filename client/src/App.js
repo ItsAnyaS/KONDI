@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Entry from './components/Entry'
 import Footer from './components/Footer';
 import About from './components/About';
+import NotFound from './components/NotFound';
 import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
 import { useState } from 'react';
 
@@ -23,15 +24,16 @@ function App() {
       <Router>
         <NavBar onLoginChange={handleLoginChange} loginState={loggedIn} />
         <Routes>
-          <Route exact key={1} path='/' element={<Home />} />
-          <Route exact key={2} path='/login' element={<Login onLoginChange={handleLoginChange} />} />
-          <Route exact key={3} path='/register'  element={<Register onLoginChange={handleLoginChange}/>} />
-          <Route exact key={4} path='/signup' element={<Register onLoginChange={handleLoginChange}/>} />
-          <Route exact key={5} path='/profile' element={<Profile loginState={loggedIn}/>} />
-          <Route exact key={6} path='/about' element={<About/>} />
-          <Route key={6} path='/entry' element={<Entry />}>
-            <Route exact key={7} path=':entryid' />
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login onLoginChange={handleLoginChange} />} />
+          <Route path='/register'  element={<Register onLoginChange={handleLoginChange}/>} />
+          <Route path='/signup' element={<Register onLoginChange={handleLoginChange}/>} />
+          <Route path='/profile' element={<Profile loginState={loggedIn}/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/entry' element={<Entry />}>
+          <Route path=':entryid' />
           </Route>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Footer/>
       </Router>

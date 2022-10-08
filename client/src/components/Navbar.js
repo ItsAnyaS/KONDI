@@ -29,7 +29,7 @@ const NavBar = ({onLoginChange, loginState}) => {
 
     return (
         <nav className="navbar">
-            <img className='logo' src='logo_outlined.png' alt='Logo'/>
+            <img className='logo' src='/public/logo_outlined.png' alt='Logo'/>
             <ul className='nav-list'>
                 <NavLink style={{ textDecoration: 'none' }} to='/'><li className='nav-items btn-hover'>HOME</li></NavLink>
                 {buttons}
