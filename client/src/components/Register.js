@@ -15,7 +15,7 @@ const Register = ({onLoginChange}) => {
     }
 
         const postUser = async () => {
-            let req = await fetch('https://fast-journey-88485.herokuapp.com/auth/signup', {
+            let req = await fetch('/auth/signup', {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

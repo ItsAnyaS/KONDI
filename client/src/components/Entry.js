@@ -14,7 +14,7 @@ const Entry = () => {
 
     useEffect(() => {
         const getData = async () => {
-            let req = await fetch(`https://fast-journey-88485.herokuapp.com/entries/edit/${params.entryid}`)
+            let req = await fetch(`/entries/edit/${params.entryid}`)
             let res = await req.json()
             setFormData(res)
         }
@@ -34,7 +34,7 @@ const Entry = () => {
 
     const handleSave = async (e) =>{
         e.preventDefault()
-        let url = params.entryid ? `https://fast-journey-88485.herokuapp.com/entries/edit/${params.entryid}` : `https://fast-journey-88485.herokuapp.com/entries/`
+        let url = params.entryid ? `/edit/${params.entryid}` : `/entries`
         let method = params.entryid? 'PATCH': 'POST'
         const req = await fetch(url, {
             method: method,

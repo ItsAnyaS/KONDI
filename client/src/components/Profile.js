@@ -15,7 +15,7 @@ const Profile = ({ loginState }) => {
     const getEntries = async () => {
         const user_id = document.cookie.split('=')[1]
         try {
-            const req = await fetch(`https://fast-journey-88485.herokuapp.com/entries/user`, {
+            const req = await fetch(`/entries/user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Profile = ({ loginState }) => {
     }
 
     const handleDeleteClick = async () => {
-        window.confirm('Delete Entry?') ? await fetch(`https://fast-journey-88485.herokuapp.com//entries/delete/${selectedEntry.id}`, { method: "DELETE" }) : 
+        window.confirm('Delete Entry?') ? await fetch(`/entries/delete/${selectedEntry.id}`, { method: "DELETE" }) : 
         getEntries()
         setSelectedEntry({ title: "Select an entry" })
         setRefresh(prev => !prev)

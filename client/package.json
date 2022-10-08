@@ -1,6 +1,7 @@
 {
   "name": "kon_di_react",
   "version": "0.1.0",
+  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

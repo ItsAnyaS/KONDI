@@ -7,7 +7,7 @@ const Login = ({ onLoginChange }) => {
     const [data, setData] = useState({})
     let navigate = useNavigate()
     const getData = async () => {
-        let req = await fetch('https://fast-journey-88485.herokuapp.com/auth/login', {
+        let req = await fetch('/auth/login', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json"
