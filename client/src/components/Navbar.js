@@ -37,5 +37,6 @@ const NavBar = ({onLoginChange, loginState}) => {
         </nav>
     )
 }
+//this is a test
 
 export default NavBar
